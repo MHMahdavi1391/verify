@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LTC Verification System</title>
+    <meta name="description" content="سیستم تأیید اصالت کارت‌ها، پرونده‌ها و گواهی‌های شرکت Lumen Technologies CO" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✅</text></svg>" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="container" id="app">
+        <div class="card" id="card">
+
+            <!-- HEADER -->
+            <div class="brand">
+                <div class="brand-icon">LTC</div>
+                <div class="brand-text">
+                    Lumen Technologies
+                    <small>سیستم تأیید اصالت</small>
+                </div>
+            </div>
+
+            <!-- LOADING -->
+            <div id="loadingState" class="loader">
+                <div class="spinner"></div>
+                <span class="loader-text">در حال بررسی شناسه ...</span>
+            </div>
+
+            <!-- RESULT -->
+            <div id="resultState" class="hidden fade-in">
+                <div class="status-badge" id="statusBadge">
+                    <span class="dot"></span>
+                    <span id="statusLabel">—</span>
+                </div>
+                <div class="detail-list" id="detailList"></div>
+                <div style="margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; text-align:center; font-size:0.7rem; color:var(--text-muted); letter-spacing:0.3px;">
+                    🔒 تأیید شده توسط LTC
+                </div>
+            </div>
+
+            <!-- ERROR -->
+            <div id="errorState" class="hidden error-box">
+                <span class="emoji">⛔</span>
+                <h2 id="errorTitle">خطا</h2>
+                <p id="errorMessage">مشکلی پیش آمده است.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
