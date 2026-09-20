@@ -1,7 +1,19 @@
-:root {
-  --accent: #0078d4;
-  --navy: #0a1a2f;
+:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --surface-border:#e1dfdd;
+  --text-primary:#1b1b1b;
+  --text-secondary:#3b3a39;
+  --text-muted:#605e5c;
+  --accent:#0078d4;
+  --navy:#0078d4;
+  --shadow:0 8px 24px rgba(0,0,0,.06);
 }
-@media (prefers-color-scheme: dark) {
-  :root { --accent: #60cdff; }
+body{
+  background:#ffffff !important;
+  color:#1b1b1b;
 }
+.card{background:#fff;border:1px solid #e1dfdd}
+.lang-toggle{background:#fff;border:1px solid #e1dfdd}
+.lang-toggle button{color:#605e5c}
+.lang-toggle button.active{background:#e8f4fc;color:#0078d4}
