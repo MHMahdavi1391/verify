@@ -1,0 +1,7 @@
+:root {
+  --accent: #0078d4;
+  --navy: #0a1a2f;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --accent: #60cdff; }
+}
