@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://mhmahdavi1391.github.io/verify/sitemap.xml
+Disallow: /
