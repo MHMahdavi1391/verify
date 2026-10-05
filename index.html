@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="eckEmKRcxO2-v0_uGxKgiAfYmNxzAT6_36wGXXYYWFs" />
     <title>LTC</title>
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <meta name="googlebot" content="noindex, nofollow, noarchive" />
+    <meta name="author" content="Lumen Technologies Co." />
+    <meta name="theme-color" content="#10131c" />
     <link rel="icon" href="https://mhmahdavi1391.github.io/VR/logo.jpg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="theme.css" />
+    <style>
+      .lang-toggle { position: fixed; top: 14px; left: 14px; z-index: 50; display: flex; border-radius: 999px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); background: rgba(20,24,32,0.8); backdrop-filter: blur(10px); }
+      .lang-toggle button { border: none; background: transparent; color: rgba(255,255,255,0.5); font-size: 0.72rem; font-weight: 700; padding: 7px 11px; cursor: pointer; font-family: inherit; }
+      .lang-toggle button.active { background: rgba(0,120,212,0.22); color: #60cdff; }
+      html[dir="ltr"] .lang-toggle { left: auto; right: 14px; }
+      html[dir="ltr"] body { direction: ltr; }
+      .brand-icon { padding: 0 !important; overflow: hidden; background: #10131c !important; }
+      .brand-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    </style>
 </head>
 <body>
-    <div class="lang-toggle" id="langToggle">
-      <button type="button" data-lang="fa" class="active">FA</button>
-      <button type="button" data-lang="en">EN</button>
-    </div>
+    <div class="lang-toggle" id="langToggle"><button type="button" data-lang="fa" class="active">FA</button><button type="button" data-lang="en">EN</button></div>
     <div class="container" id="app">
         <div class="card animate__animated animate__fadeInUp" id="card">
-            <div class="brand">
-                <div class="brand-icon"><img src="https://mhmahdavi1391.github.io/VR/logo.jpg" alt="Lumen Technologies Co."></div>
-                <div class="brand-text">Lumen Technologies<small data-i18n="brand_sub">سیستم تأیید اصالت</small></div>
-            </div>
+            <div class="brand"><div class="brand-icon"><img src="https://mhmahdavi1391.github.io/VR/logo.jpg" alt="Lumen Technologies Co."></div><div class="brand-text">Lumen Technologies<small data-i18n="brand_sub">سیستم تأیید اصالت</small></div></div>
             <div id="loadingState" class="loader"><div class="spinner"></div><span class="loader-text" data-i18n="loading">در حال بررسی شناسه ...</span></div>
-            <div id="resultState" class="hidden fade-in"><div class="status-badge" id="statusBadge"><span class="dot"></span><span id="statusLabel">—</span></div><div class="detail-list" id="detailList"></div></div>
+            <div id="resultState" class="hidden fade-in"><div class="status-badge" id="statusBadge"><span class="dot"></span><span id="statusLabel">—</span></div><div class="detail-list" id="detailList"></div><div style="margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; text-align:center; font-size:0.7rem; color:var(--text-muted);" data-i18n="verified_by">تأیید شده توسط LTC</div></div>
             <div id="errorState" class="hidden error-box"><span class="emoji">⛔</span><h2 id="errorTitle">خطا</h2><p id="errorMessage">مشکلی پیش آمده است.</p></div>
         </div>
     </div>
