@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap');
-body{background:#0c1218 !important;color:#f4f7fb !important;font-family:Vazirmatn,Inter,system-ui,sans-serif !important}
-body::before{content:none !important}
-.card{background:rgba(16,22,30,.9) !important;border:1px solid rgba(255,255,255,.14) !important;box-shadow:0 18px 40px rgba(0,0,0,.32) !important;backdrop-filter:blur(20px) !important;color:#f4f7fb !important}
-.brand-text,.detail-label,.detail-value{color:#f4f7fb !important}
-.brand-text small,.loader-text,.detail-label{color:#c5d0dc !important}
-.detail-row{background:rgba(255,255,255,.05) !important;border-color:rgba(255,255,255,.1) !important}
-.lang-toggle{background:rgba(16,22,30,.92) !important;border-color:rgba(255,255,255,.14) !important}
-.lang-toggle button{color:#f4f7fb !important}
-.lang-toggle button.active{background:rgba(255,255,255,.12) !important;color:#fff !important}
-.status-badge{color:#101820 !important}
+body{background:#081018 !important;color:#f7f9fc !important;font-family:Vazirmatn,Inter,system-ui,sans-serif !important}
+body::before{content:"" !important;position:fixed;inset:-8%;z-index:-1;pointer-events:none;background:radial-gradient(70% 42% at 50% 112%, rgba(214,176,142,.4), transparent 46%),radial-gradient(46% 32% at 82% 8%, rgba(92,132,186,.36), transparent 58%),linear-gradient(180deg,#102033,#16324d 46%,#243246) !important}
+.card{background:rgba(12,20,32,.72) !important;border:1px solid rgba(255,255,255,.18) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 20px 46px rgba(0,0,0,.28) !important;backdrop-filter:blur(26px) saturate(1.25) !important;color:#f7f9fc !important}
+.brand-text,.detail-value{color:#f7f9fc !important}
+.brand-text small,.loader-text,.detail-label{color:#c9d3e0 !important}
+.detail-row{background:rgba(255,255,255,.06) !important;border-color:rgba(255,255,255,.1) !important}
+.lang-toggle{background:rgba(12,20,32,.72) !important;border-color:rgba(255,255,255,.18) !important;backdrop-filter:blur(18px)}
+.lang-toggle button{color:#f7f9fc !important}
+.lang-toggle button.active{background:rgba(255,255,255,.12) !important}
