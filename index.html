@@ -32,6 +32,12 @@
             <div id="resultState" class="hidden fade-in"><div class="status-badge" id="statusBadge"><span class="dot"></span><span id="statusLabel">—</span></div><div class="detail-list" id="detailList"></div><div style="margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; text-align:center; font-size:0.7rem; color:var(--text-muted);" data-i18n="verified_by">تأیید شده توسط LTC</div></div>
             <div id="errorState" class="hidden error-box"><span class="emoji">⛔</span><h2 id="errorTitle">خطا</h2><p id="errorMessage">مشکلی پیش آمده است.</p></div>
         </div>
+        <section class="hub-panel" id="hubPanel" aria-label="hub">
+            <a class="hub-link" id="hubLink" href="https://lt-c.iddns.ir/" data-i18n="hub_link">هاب اصلی LTC</a>
+            <p class="hub-note" id="hubNote" data-i18n="hub_note">اگر کلیک نکنید، ۸ ثانیه دیگر هاب اصلی باز می‌شود.</p>
+            <div class="hub-links" id="hubLinks"></div>
+            <button type="button" class="hub-stay" id="hubStay" data-i18n="hub_stay">ماندن در این صفحه</button>
+        </section>
     </div>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
