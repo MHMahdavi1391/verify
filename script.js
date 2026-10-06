@@ -2,22 +2,11 @@
 (function() {
     'use strict';
 
-    const HUB_URL = 'https://lt-c.iddns.ir/';
-    const AUTO_SECONDS = 8;
-    const MAIN_LINKS = [
-        { href: 'https://lt-c.iddns.ir/', fa: 'هاب اصلی', en: 'Main hub' },
-        { href: 'https://mhmahdavi1391.github.io/yelo/', fa: 'YELO Music', en: 'YELO Music' },
-        { href: 'https://mhmahdavi1391.github.io/VR/', fa: 'کتابخانه VR', en: 'VR library' },
-        { href: 'https://t.me/ltc_3d', fa: 'پرینت سه‌بعدی', en: '3D printing' },
-        { href: 'https://lt-c.iddns.ir/n.html', fa: 'نظرسنجی', en: 'Survey' },
-        { href: 'https://lt-c.iddns.ir/#about', fa: 'معرفی', en: 'About' }
-    ];
-
     const I18N = {
         fa: {
             brand_sub: 'سیستم تأیید اصالت',
             loading: 'در حال بررسی شناسه ...',
-            verified_by: '🔒 تأیید شده توسط LTC',
+            verified_by: 'تأیید شده توسط LTC',
             id_label: 'شناسه',
             copy_id: 'کپی شناسه',
             invalid_id_title: 'شناسه نامعتبر',
@@ -28,18 +17,15 @@
             no_id_msg: 'لطفاً از طریق لینک معتبر وارد شوید.',
             error_default: 'خطا',
             error_generic: 'مشکلی پیش آمده است.',
-            status_valid: 'VERIFIED ✅',
-            status_expired: 'EXPIRED ⚠️',
-            status_invalid: 'INVALID ❌',
-            hub_link: 'هاب اصلی LTC',
-            hub_stay: 'ماندن در این صفحه',
-            hub_note: 'اگر کلیک نکنید، {n} ثانیه دیگر هاب اصلی باز می‌شود.',
-            hub_cancelled: 'باز شدن خودکار لغو شد. می‌توانید لینک ها را خودتان باز کنید.'
+            status_valid: 'VERIFIED',
+            status_expired: 'EXPIRED',
+            status_invalid: 'INVALID',
+            company_site: 'سایت شرکت'
         },
         en: {
             brand_sub: 'Authenticity verification system',
             loading: 'Checking ID ...',
-            verified_by: '🔒 Verified by LTC',
+            verified_by: 'Verified by LTC',
             id_label: 'ID',
             copy_id: 'Copy ID',
             invalid_id_title: 'Invalid ID',
@@ -50,27 +36,19 @@
             no_id_msg: 'Please open this page via a valid link.',
             error_default: 'Error',
             error_generic: 'Something went wrong.',
-            status_valid: 'VERIFIED ✅',
-            status_expired: 'EXPIRED ⚠️',
-            status_invalid: 'INVALID ❌',
-            hub_link: 'LTC main hub',
-            hub_stay: 'Stay on this page',
-            hub_note: 'If you do not click, the main hub opens in {n} seconds.',
-            hub_cancelled: 'Auto-open cancelled. You can open the links yourself.'
+            status_valid: 'VERIFIED',
+            status_expired: 'EXPIRED',
+            status_invalid: 'INVALID',
+            company_site: 'Company site'
         }
     };
 
     let lang = localStorage.getItem('ltc_lang') || 'fa';
-    let autoLeft = AUTO_SECONDS;
-    let autoTimer = null;
-    let autoCancelled = false;
-
     function t(key) { return (I18N[lang] || I18N.fa)[key] || key; }
 
     function applyStaticI18n() {
         document.querySelectorAll('[data-i18n]').forEach(function(el) {
             const key = el.getAttribute('data-i18n');
-            if (key === 'hub_note') return;
             if (I18N[lang] && I18N[lang][key]) el.textContent = I18N[lang][key];
         });
         document.documentElement.lang = lang;
@@ -78,8 +56,6 @@
         document.querySelectorAll('#langToggle button').forEach(function(btn) {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
-        renderHubLinks();
-        updateHubNote();
     }
 
     const $ = (sel) => document.querySelector(sel);
@@ -92,9 +68,6 @@
     const errorTitle = $('#errorTitle');
     const errorMessage = $('#errorMessage');
     const card = $('#card');
-    const hubNote = $('#hubNote');
-    const hubLinks = $('#hubLinks');
-    const hubStay = $('#hubStay');
 
     function getParam(name) {
         const url = new URL(window.location.href);
@@ -179,57 +152,6 @@
         else detailList.innerHTML = '';
     }
 
-    function updateHubNote() {
-        if (!hubNote) return;
-        if (autoCancelled) {
-            hubNote.textContent = t('hub_cancelled');
-            return;
-        }
-        hubNote.textContent = t('hub_note').replace('{n}', String(autoLeft));
-    }
-
-    function renderHubLinks() {
-        if (!hubLinks) return;
-        hubLinks.innerHTML = '';
-        MAIN_LINKS.forEach(function(item) {
-            const a = document.createElement('a');
-            a.className = 'hub-chip';
-            a.href = item.href;
-            a.textContent = lang === 'en' ? item.en : item.fa;
-            a.addEventListener('click', cancelAutoOpen);
-            hubLinks.appendChild(a);
-        });
-    }
-
-    function cancelAutoOpen() {
-        if (autoCancelled) return;
-        autoCancelled = true;
-        if (autoTimer) {
-            clearInterval(autoTimer);
-            autoTimer = null;
-        }
-        if (hubStay) hubStay.classList.add('hidden');
-        updateHubNote();
-    }
-
-    function startAutoOpen() {
-        const hubLink = $('#hubLink');
-        if (hubLink) hubLink.addEventListener('click', cancelAutoOpen);
-        if (hubStay) hubStay.addEventListener('click', cancelAutoOpen);
-        renderHubLinks();
-        updateHubNote();
-        autoTimer = setInterval(function() {
-            autoLeft -= 1;
-            if (autoLeft <= 0) {
-                clearInterval(autoTimer);
-                autoTimer = null;
-                if (!autoCancelled) window.location.assign(HUB_URL);
-                return;
-            }
-            updateHubNote();
-        }, 1000);
-    }
-
     async function verify(id) {
         if (!id || id.trim() === '') {
             showError(t('invalid_id_title'), t('invalid_id_msg'));
@@ -256,7 +178,6 @@
 
     function init() {
         applyStaticI18n();
-        startAutoOpen();
         document.querySelectorAll('#langToggle button').forEach(function(btn) {
             btn.addEventListener('click', function() {
                 lang = btn.getAttribute('data-lang');
