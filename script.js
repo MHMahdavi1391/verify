@@ -1,4 +1,4 @@
-/* LTC Verification System + i18n + forced countdown */
+/* LTC Verification System + i18n + forced auto-redirect countdown */
 (function() {
     'use strict';
 
@@ -21,7 +21,8 @@
             status_expired: 'EXPIRED',
             status_invalid: 'INVALID',
             company_site: 'سایت شرکت',
-            countdown: 'ورود به سایت شرکت در {s} ثانیه'
+            countdown: 'ورود به سایت شرکت در {s} ثانیه',
+            redirecting: 'در حال انتقال به سایت شرکت...'
         },
         en: {
             brand_sub: 'Authenticity verification system',
@@ -41,7 +42,8 @@
             status_expired: 'EXPIRED',
             status_invalid: 'INVALID',
             company_site: 'Company site',
-            countdown: 'Enter company site in {s}s'
+            countdown: 'Enter company site in {s}s',
+            redirecting: 'Redirecting to company site...'
         }
     };
 
@@ -192,10 +194,8 @@
                 seconds--;
                 setTimeout(update, 1000);
             } else {
-                companyBtn.textContent = t('company_site');
-                companyBtn.href = TARGET;
-                companyBtn.classList.remove('counting');
-                companyBtn.style.pointerEvents = '';
+                companyBtn.textContent = t('redirecting');
+                window.location.href = TARGET;
             }
         }
         update();
