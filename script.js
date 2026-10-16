@@ -1,4 +1,4 @@
-/* LTC Verification System + i18n */
+/* LTC Verification System + i18n + forced countdown */
 (function() {
     'use strict';
 
@@ -20,7 +20,8 @@
             status_valid: 'VERIFIED',
             status_expired: 'EXPIRED',
             status_invalid: 'INVALID',
-            company_site: 'سایت شرکت'
+            company_site: 'سایت شرکت',
+            countdown: 'ورود به سایت شرکت در {s} ثانیه'
         },
         en: {
             brand_sub: 'Authenticity verification system',
@@ -39,7 +40,8 @@
             status_valid: 'VERIFIED',
             status_expired: 'EXPIRED',
             status_invalid: 'INVALID',
-            company_site: 'Company site'
+            company_site: 'Company site',
+            countdown: 'Enter company site in {s}s'
         }
     };
 
@@ -68,6 +70,7 @@
     const errorTitle = $('#errorTitle');
     const errorMessage = $('#errorMessage');
     const card = $('#card');
+    const companyBtn = $('#companyBtn');
 
     function getParam(name) {
         const url = new URL(window.location.href);
@@ -176,8 +179,31 @@
         }
     }
 
+    function startCountdown() {
+        if (!companyBtn) return;
+        const TARGET = 'https://lt-c.iddns.ir/';
+        let seconds = 5;
+        companyBtn.classList.add('counting');
+        companyBtn.removeAttribute('href');
+        companyBtn.style.pointerEvents = 'none';
+        function update() {
+            if (seconds > 0) {
+                companyBtn.textContent = t('countdown').replace('{s}', seconds);
+                seconds--;
+                setTimeout(update, 1000);
+            } else {
+                companyBtn.textContent = t('company_site');
+                companyBtn.href = TARGET;
+                companyBtn.classList.remove('counting');
+                companyBtn.style.pointerEvents = '';
+            }
+        }
+        update();
+    }
+
     function init() {
         applyStaticI18n();
+        startCountdown();
         document.querySelectorAll('#langToggle button').forEach(function(btn) {
             btn.addEventListener('click', function() {
                 lang = btn.getAttribute('data-lang');
