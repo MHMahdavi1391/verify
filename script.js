@@ -1,4 +1,4 @@
-/* LTC Verification System + i18n + forced auto-redirect countdown */
+/* FRAME Verification System + i18n + forced auto-redirect countdown */
 (function() {
     'use strict';
 
@@ -6,7 +6,7 @@
         fa: {
             brand_sub: 'سیستم تأیید اصالت',
             loading: 'در حال بررسی شناسه ...',
-            verified_by: 'تأیید شده توسط LTC',
+            verified_by: 'تأیید شده توسط FRAME',
             id_label: 'شناسه',
             copy_id: 'کپی شناسه',
             invalid_id_title: 'شناسه نامعتبر',
@@ -27,7 +27,7 @@
         en: {
             brand_sub: 'Authenticity verification system',
             loading: 'Checking ID ...',
-            verified_by: 'Verified by LTC',
+            verified_by: 'Verified by FRAME',
             id_label: 'ID',
             copy_id: 'Copy ID',
             invalid_id_title: 'Invalid ID',
