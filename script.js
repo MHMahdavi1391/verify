@@ -183,7 +183,7 @@
 
     function startCountdown() {
         if (!companyBtn) return;
-        const TARGET = 'https://lt-c.iddns.ir/';
+        const TARGET = 'https://frame.iddns.ir/';
         let seconds = 5;
         companyBtn.classList.add('counting');
         companyBtn.removeAttribute('href');
